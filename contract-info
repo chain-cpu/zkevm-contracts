@@ -1,0 +1,84 @@
+ npx hardhat run deployment/deployContracts.js --network goerli && npm run saveDeployment:goerli
+
+#######################
+
+Matic deployed to: 0x2EbB93495C0A0cD563eE3a9c27209093CD695D6b
+#######################
+
+Verifier deployed to: 0xa23A7c2E4f27852b4dA8b4C1814fC0cD67983978
+#######################
+
+polygonZkEVMGlobalExitRoot deployed to: 0x61Ac8321Fc7eABe918BDD03FFB5401e8d545f169
+#######################
+
+PolygonZkEVMBridge deployed to: 0x9325a34a5557Ee87Df7a905d1359E8Ca137230B5
+#######################
+
+Polygon ZK-EVM deployed to: 0x8411550304001D5042242380a734bEfeD9336106
+
+#######################
+#####    Checks PolygonZkEVMBridge   #####
+#######################
+PolygonZkEVMGlobalExitRootAddress: 0x61Ac8321Fc7eABe918BDD03FFB5401e8d545f169
+networkID: 0
+zkEVMaddress: 0x8411550304001D5042242380a734bEfeD9336106
+
+#######################
+##### Deployment Polygon ZK-EVM #####
+#######################
+deployer: 0x874B7896188a5e61062160289ae3BcCBbD3c2A6F
+PolygonZkEVMGlobalExitRootAddress: 0x61Ac8321Fc7eABe918BDD03FFB5401e8d545f169
+maticTokenAddress: 0x2EbB93495C0A0cD563eE3a9c27209093CD695D6b
+verifierAddress: 0xa23A7c2E4f27852b4dA8b4C1814fC0cD67983978
+polygonZkEVMBridgeContract: 0x9325a34a5557Ee87Df7a905d1359E8Ca137230B5
+admin: f39fd6e51aad88f6f4ce6ab8827279cfffb92266
+chainID: 1000
+trustedSequencer: f39fd6e51aad88f6f4ce6ab8827279cfffb92266
+pendingStateTimeout: 604799
+forceBatchAllowed: false
+trustedAggregator: 70997970c51812dc3a010c7d01b50e0d17dc79c8
+trustedAggregatorTimeout: 604799
+genesisRoot: 0x075747f160c03c443b7879dd482dc54b496196f0cdc5b2875b8cd88532e4935d
+trustedSequencerURL: https://moduluschaintestrpc.cultdao.io
+networkName: ModulusChain Testnet
+
+#######################
+#####    Checks  PolygonZkEVMMock  #####
+#######################
+PolygonZkEVMGlobalExitRootAddress: 0x61Ac8321Fc7eABe918BDD03FFB5401e8d545f169
+maticTokenAddress: 0x2EbB93495C0A0cD563eE3a9c27209093CD695D6b
+verifierAddress: 0xa23A7c2E4f27852b4dA8b4C1814fC0cD67983978
+polygonZkEVMBridgeContract: 0x9325a34a5557Ee87Df7a905d1359E8Ca137230B5
+admin: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+chainID: BigNumber { value: "1000" }
+trustedSequencer: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+pendingStateTimeout: BigNumber { value: "604799" }
+forceBatchAllowed: false
+trustedAggregator: 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
+trustedAggregatorTimeout: BigNumber { value: "604799" }
+genesiRoot: 0x075747f160c03c443b7879dd482dc54b496196f0cdc5b2875b8cd88532e4935d
+trustedSequencerURL: https://moduluschaintestrpc.cultdao.io
+networkName: ModulusChain Testnet
+owner: 0x874B7896188a5e61062160289ae3BcCBbD3c2A6F
+
+#######################
+##### Deployment TimelockContract  #####
+#######################
+minDelayTimelock: 3600
+timelockAddress: 0x617b3a3528F9cDd6630fd3301B9c8911F7Bf063D
+zkEVMAddress: 0x8411550304001D5042242380a734bEfeD9336106
+#######################
+
+Polygon timelockContract deployed to: 0x9bE0Dd8c2A9cCAABB8a3f4b405Db4683b194be99
+
+#######################
+#####  Checks TimelockContract  #####
+#######################
+minDelayTimelock: BigNumber { value: "3600" }
+polygonZkEVM: 0x8411550304001D5042242380a734bEfeD9336106
+✔ 0x61Ac8321Fc7eABe918BDD03FFB5401e8d545f169 (transparent) proxy ownership transfered through admin proxy
+✔ 0x9325a34a5557Ee87Df7a905d1359E8Ca137230B5 (transparent) proxy ownership transfered through admin proxy
+✔ 0x8411550304001D5042242380a734bEfeD9336106 (transparent) proxy ownership transfered through admin proxy
+
+> @0xpolygonhermez/zkevm-contracts@0.6.0.0 saveDeployment:goerli
+> mkdir -p deployments/goerli_$(date +%s) && cp -r deployment/deploy_*.json deployments/goerli_$(date +%s) && cp .openzeppelin/goerli.json deployments/goerli_$(date +%s)

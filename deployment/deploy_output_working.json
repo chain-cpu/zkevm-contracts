@@ -1,0 +1,18 @@
+{
+ "polygonZkEVMAddress": "0x69a8fe5Ed32768Fef2d6430A0710e9619444dE3a",
+ "polygonZkEVMBridgeAddress": "0x4113cac49339E17d5a2b3cB6f948A85DfB3b2204",
+ "polygonZkEVMGlobalExitRootAddress": "0xC567F7126014096f4034A42FA7E4822B2D056C5b",
+ "maticTokenAddress": "0x39E681fDe48F2a4C19a8A2C84D9125B946F6bfC6",
+ "verifierAddress": "0x6624Dfab823F690ffCCc495878926205F811Fa15",
+ "deployerAddress": "0x874B7896188a5e61062160289ae3BcCBbD3c2A6F",
+ "timelockContractAddress": "0xCf893Bed61d786b0d2989629B111E5A4f6e71590",
+ "deploymentBlockNumber": 8404393,
+ "genesisRoot": "0x075747f160c03c443b7879dd482dc54b496196f0cdc5b2875b8cd88532e4935d",
+ "trustedSequencer": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+ "forceBatchAllowed": false,
+ "trustedSequencerURL": "https://moduluschaintestrpc.cultdao.io",
+ "chainID": 1000,
+ "networkName": "ModulusChain Testnet",
+ "admin": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+ "trustedAggregator": "0x70997970c51812dc3a010c7d01b50e0d17dc79c8"
+}

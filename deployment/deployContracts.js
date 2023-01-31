@@ -121,7 +121,7 @@ async function main() {
             break;
         } catch (error) {
             console.log(`attempt ${i}`);
-            console.log('upgrades.deployProxy of polygonZkEVMGlobalExitRoot ', error.error.reason);
+            console.log('upgrades.deployProxy of polygonZkEVMGlobalExitRoot ', error);
         }
 
         // reach limits of attempts
@@ -193,6 +193,7 @@ async function main() {
         networkIDMainnet,
         polygonZkEVMGlobalExitRoot.address,
         polygonZkEVMContract.address,
+        maticTokenContract.address
     )).wait();
 
     console.log('\n#######################');
