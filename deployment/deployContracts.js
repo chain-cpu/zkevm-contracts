@@ -76,8 +76,8 @@ async function main() {
     /*
      *Deployment MATIC
      */
-    const maticTokenName = 'Matic Token';
-    const maticTokenSymbol = 'MATIC';
+    const maticTokenName = 'Cult Token';
+    const maticTokenSymbol = 'CULT';
     const maticTokenInitialBalance = ethers.utils.parseEther('20000000');
 
     const maticTokenFactory = await ethers.getContractFactory('ERC20PermitMock', deployer);
@@ -91,6 +91,22 @@ async function main() {
 
     console.log('#######################\n');
     console.log('Matic deployed to:', maticTokenContract.address);
+
+    const mockTokenName = 'Mock Token';
+    const mockTokenSymbol = 'MOCK';
+    const mockTokenInitialBalance = ethers.utils.parseEther('20000000');
+
+    const mockTokenFactory = await ethers.getContractFactory('ERC20PermitMock', deployer);
+    const mockTokenContract = await maticTokenFactory.deploy(
+        mockTokenName,
+        mockTokenSymbol,
+        deployer.address,
+        mockTokenInitialBalance,
+    );
+    await mockTokenContract.deployed();
+
+    console.log('#######################\n');
+    console.log('Mock deployed to:', mockTokenContract.address);
 
     /*
      *Deployment verifier
@@ -342,6 +358,7 @@ async function main() {
         polygonZkEVMBridgeAddress: polygonZkEVMBridgeContract.address,
         polygonZkEVMGlobalExitRootAddress: polygonZkEVMGlobalExitRoot.address,
         maticTokenAddress: maticTokenContract.address,
+        mockTokenAdderss: mockTokenContract.address,
         verifierAddress: verifierContract.address,
         deployerAddress: deployer.address,
         timelockContractAddress: timelockContract.address,

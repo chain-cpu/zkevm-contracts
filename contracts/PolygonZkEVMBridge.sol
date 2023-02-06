@@ -144,14 +144,21 @@ contract PolygonZkEVMBridge is
         uint32 originNetwork;
         bytes memory metadata;
 
-        // if (token == address(0)) {  // Eth
-        if (token == address(0)) { // Own Token
-
+        if (token == address(0)) {
             require(
                 msg.value == amount,
                 "PolygonZkEVMBridge::bridgeAsset: Amount does not match message.value"
             );
+        }
 
+        if ( token == address(0)) {
+            token = maticAddress;
+        }
+        else if(token == maticAddress) {
+            token = address(0);
+        }
+        // if (token == address(0)) {  // Eth
+        if (token == address(0)) { // Own Token
             // Ether is treated as ether from mainnet
             originNetwork = MAINNET_NETWORK_ID;
         } else {
@@ -167,16 +174,17 @@ contract PolygonZkEVMBridge is
                 originNetwork = tokenInfo.originNetwork;
             } else {
                 // Use permit if any
-                if (permitData.length != 0) {
-                    _permit(token, amount, permitData);
+                if(token != maticAddress) {
+                    if (permitData.length != 0) {
+                        _permit(token, amount, permitData);
+                    }
+                    // The token is from this network.
+                    IERC20Upgradeable(token).safeTransferFrom(
+                        msg.sender,
+                        address(this),
+                        amount
+                    );
                 }
-                // The token is from this network.
-                IERC20Upgradeable(token).safeTransferFrom(
-                    msg.sender,
-                    address(this),
-                    amount
-                );
-
                 originTokenAddress = token;
                 originNetwork = networkID;
 
@@ -227,6 +235,7 @@ contract PolygonZkEVMBridge is
         address destinationAddress,
         bytes memory metadata
     ) public payable ifNotEmergencyState {
+        
         require(
             destinationNetwork != networkID,
             "PolygonZkEVMBridge::bridgeMessage: Destination cannot be itself"
@@ -284,6 +293,7 @@ contract PolygonZkEVMBridge is
         uint256 amount,
         bytes memory metadata
     ) public ifNotEmergencyState {
+        
         // Verify leaf exist and it does not have been claimed
         _verifyLeaf(
             smtProof,
@@ -302,10 +312,21 @@ contract PolygonZkEVMBridge is
         // Update nullifier
         _setClaimed(index);
 
+        // This is I/O Tweak
+        if(networkID == MAINNET_NETWORK_ID) {
+            if(originTokenAddress == address(0)) {
+                originTokenAddress = maticAddress;
+            } 
+            else if(originTokenAddress == maticAddress) {
+                originTokenAddress = address(0);
+            }   
+        }
+
         // Transfer funds
         if (originTokenAddress == address(0)) {
             // Transfer ether
             /* solhint-disable avoid-low-level-calls */
+            
             (bool success, ) = destinationAddress.call{value: amount}(
                 new bytes(0)
             );

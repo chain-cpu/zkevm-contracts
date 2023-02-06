@@ -15,7 +15,7 @@ import "./lib/EmergencyManager.sol";
  * PolygonZkEVMBridge that will be deployed on both networks Ethereum and Polygon zkEVM
  * Contract responsible to manage the token interactions with other networks
  */
-contract PolygonZkEVMBridge is
+contract PolygonZkEVMBridgeOld is
     DepositContract,
     EmergencyManager,
     IPolygonZkEVMBridge
